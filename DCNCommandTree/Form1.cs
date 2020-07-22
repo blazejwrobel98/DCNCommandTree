@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace DCNCommandTree
 {
@@ -123,8 +124,47 @@ namespace DCNCommandTree
         private void StartApp()
         {
             panel2.Visible = false;
+            next.Visible = false;
+            finish.Visible = false;
+            previous.Visible = false;
+            indexshow.Visible = false;
             ControlPanel.Visible = true;
             ControlPanel.BringToFront();
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ControlPanel_Paint(object sender, PaintEventArgs e)
+        {
+            control_ip.Text = Urzadzenie.IP;
+            control_ip.Enabled = false;
+            for (int i = 0; i <= 100; i += 10) 
+            {
+                control_telnet_progress.Value = i;
+            }
+            if (Telnet.Test())
+            {
+                control_telnet_test_label.Text = "OK";
+                control_telnet_test_label.ForeColor = Color.Green;
+            }
+            else
+            {
+                control_telnet_test_label.Text = "BŁĄD";
+                control_telnet_test_label.ForeColor = Color.Red;
+            }
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void control_telnet_progress_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public class Device
@@ -176,6 +216,13 @@ namespace DCNCommandTree
         {
             get { return remember; }
             set { remember = value; }
+        }
+    }
+    public class Telnet
+    {
+        public static bool Test()
+        {
+            return false;
         }
     }
 }

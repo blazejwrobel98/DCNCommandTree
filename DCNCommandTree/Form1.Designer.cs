@@ -47,9 +47,15 @@
             this.indexshow = new System.Windows.Forms.Label();
             this.finish = new System.Windows.Forms.Button();
             this.ControlPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.control_telnet_progress = new System.Windows.Forms.ProgressBar();
+            this.control_ip = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.control_telnet_test_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -160,8 +166,42 @@
             // 
             // ControlPanel
             // 
+            this.ControlPanel.Controls.Add(this.control_telnet_test_label);
+            this.ControlPanel.Controls.Add(this.label2);
+            this.ControlPanel.Controls.Add(this.control_telnet_progress);
+            this.ControlPanel.Controls.Add(this.control_ip);
+            this.ControlPanel.Controls.Add(this.label1);
             resources.ApplyResources(this.ControlPanel, "ControlPanel");
             this.ControlPanel.Name = "ControlPanel";
+            this.ControlPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ControlPanel_Paint);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            // 
+            // control_telnet_progress
+            // 
+            resources.ApplyResources(this.control_telnet_progress, "control_telnet_progress");
+            this.control_telnet_progress.Name = "control_telnet_progress";
+            this.control_telnet_progress.Click += new System.EventHandler(this.control_telnet_progress_Click);
+            // 
+            // control_ip
+            // 
+            resources.ApplyResources(this.control_ip, "control_ip");
+            this.control_ip.Name = "control_ip";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // control_telnet_test_label
+            // 
+            resources.ApplyResources(this.control_telnet_test_label, "control_telnet_test_label");
+            this.control_telnet_test_label.Name = "control_telnet_test_label";
             // 
             // IP
             // 
@@ -182,6 +222,8 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.ControlPanel.ResumeLayout(false);
+            this.ControlPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +248,11 @@
         private System.Windows.Forms.Label indexshow;
         private System.Windows.Forms.Button finish;
         private System.Windows.Forms.Panel ControlPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox control_ip;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ProgressBar control_telnet_progress;
+        private System.Windows.Forms.Label control_telnet_test_label;
     }
 }
 
