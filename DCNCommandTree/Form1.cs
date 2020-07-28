@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace DCNCommandTree
 {
@@ -137,15 +139,11 @@ namespace DCNCommandTree
 
         }
 
-        private void ControlPanel_Paint(object sender, PaintEventArgs e)
+        public void ControlPanel_Paint(object sender, PaintEventArgs e)
         {
             control_ip.Text = Urzadzenie.IP;
             control_ip.Enabled = false;
-            for (int i = 0; i <= 100; i += 10) 
-            {
-                control_telnet_progress.Value = i;
-            }
-            if (Telnet.Test())
+            if (Connection.Test(Urzadzenie))
             {
                 control_telnet_test_label.Text = "OK";
                 control_telnet_test_label.ForeColor = Color.Green;
@@ -218,11 +216,29 @@ namespace DCNCommandTree
             set { remember = value; }
         }
     }
-    public class Telnet
+    public class Connection
     {
-        public static bool Test()
+        public static bool Test(Device Urzadzenie)
         {
-            return false;
+            // create the client 
+            Telnet client = new Telnet("servername");
+            // start the Shell to send commands and read responses 
+            Shell shell = client.StartShell();
+            // set the prompt of the remote server's shell first 
+            shell.Prompt = "servername# ";
+            // read a welcome message 
+            string welcome = shell.ReadAll();
+            // display welcome message 
+            Console.WriteLine(welcome);
+            // send the 'df' command 
+            shell.SendCommand("df");
+            // read all response, effectively waiting for the command to end 
+            string response = shell.ReadAll();
+            // display the output 
+            Console.WriteLine("Disk usage info:");
+            Console.WriteLine(response);
+            // close the shell 
+            shell.Close();
         }
     }
 }

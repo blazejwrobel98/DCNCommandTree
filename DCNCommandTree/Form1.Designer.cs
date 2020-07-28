@@ -47,11 +47,11 @@
             this.indexshow = new System.Windows.Forms.Label();
             this.finish = new System.Windows.Forms.Button();
             this.ControlPanel = new System.Windows.Forms.Panel();
+            this.control_telnet_test_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.control_telnet_progress = new System.Windows.Forms.ProgressBar();
             this.control_ip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.control_telnet_test_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -175,6 +175,11 @@
             this.ControlPanel.Name = "ControlPanel";
             this.ControlPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ControlPanel_Paint);
             // 
+            // control_telnet_test_label
+            // 
+            resources.ApplyResources(this.control_telnet_test_label, "control_telnet_test_label");
+            this.control_telnet_test_label.Name = "control_telnet_test_label";
+            // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
@@ -185,6 +190,7 @@
             // 
             resources.ApplyResources(this.control_telnet_progress, "control_telnet_progress");
             this.control_telnet_progress.Name = "control_telnet_progress";
+            this.control_telnet_progress.Step = 1;
             this.control_telnet_progress.Click += new System.EventHandler(this.control_telnet_progress_Click);
             // 
             // control_ip
@@ -197,11 +203,6 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // control_telnet_test_label
-            // 
-            resources.ApplyResources(this.control_telnet_test_label, "control_telnet_test_label");
-            this.control_telnet_test_label.Name = "control_telnet_test_label";
             // 
             // IP
             // 
